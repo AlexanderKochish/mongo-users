@@ -8,6 +8,6 @@
     "routes": [
         { "src": "/", "dest": "./index.js" },
         { "src": "/users", "methods": ["POST","GET"], "dest": "./index.js" },
-        { "src": "/", "use": "./swagger.yml" }
+        { "src": "/", "dest": "./swagger.yml" }
     ]
 }
