@@ -1,13 +1,11 @@
 {
     "version": 2,
     "builds": [
-        { "src": "*.js", "use": "@vercel/node" },
-        { "src": "*.yml", "use": "@vercel/yaml" }
+        { "src": "*.js", "use": "@vercel/node" } 
     ],
 
     "routes": [
         { "src": "/", "dest": "./index.js" },
-        { "src": "/users", "methods": ["POST","GET"], "dest": "./index.js" },
-        { "src": "/", "dest": "./swagger.yml" }
+        { "src": "/users", "methods": ["POST","GET"], "dest": "./index.js" }
     ]
 }
