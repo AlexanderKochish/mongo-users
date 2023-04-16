@@ -26,10 +26,10 @@ const options = {
                     type: 'object',
                     properties:{
                         id:{
-                            type: integer,
+                            type: 'integer',
                         },
                         name:{
-                            type: string,
+                            type: 'string',
                      
                         } 
                     }
@@ -37,10 +37,10 @@ const options = {
             }
         }
     },
-    apis:[router]
+    apis:['../routes/*js']
 };
 const specs = swaggerJsdoc(options)
-app.use('/',swaggerUi.serve, swaggerUi.setup(specs))
+app.use('/docs',swaggerUi.serve, swaggerUi.setup(specs))
 app.use(cors())
 app.use(express.json())
 
