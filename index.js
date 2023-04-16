@@ -12,12 +12,12 @@ const YAML = require('yaml')
 
 app.use(cors())
 app.use(express.json())
-
+const file  = fs.readFileSync('./swagger.yml', 'utf8')
+const swaggerDocument = YAML.parse(file)
 
 mongoose.connect(`mongodb+srv://shvepsolek:${process.env.DB_PASSWORD}@cluster0.kbbfhuo.mongodb.net/mongo-users?retryWrites=true&w=majority`)
 app.use("/",router)
-const file  = fs.readFileSync('./swagger.yml', 'utf8')
-const swaggerDocument = YAML.parse(file)
+
 
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
