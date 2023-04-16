@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         { "src": "*.js", "use": "@vercel/node" },
-        { "src": "*.yml", "use": "@vercel/yml" }
+        { "src": "*.yml", "use": "@vercel/yaml" }
     ],
 
     "routes": [
