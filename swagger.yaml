@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:6000
     description: Optional server description, e.g. Main (production) server
-  - url: http://localhost:6000
+  - url: https://mongo-users.vercel.app
     description: Optional server description, e.g. Internal staging server for testing
 paths:
   /users:
