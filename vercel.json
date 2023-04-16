@@ -1,20 +1,25 @@
 {
     "version": 2,
     "builds": [
-        { "src": "index.js", "use": "@versel/node",
+        { "src": "index.js", "use": "@vercel/node" },
+        {
+            "src": "swagger.yaml",
+            "use": "@apidevtools/swagger-cli",
             "config":{
-                "includeFiles": ["swagger.yaml"]
+                "version": "3.0.0",
+                "base":"https://mongo-users.vercel.app",
+                "schemes":["https"]
             }
         }
     ],
     "routes":[
         {
-            "src": "/api/(.*)",
-            "dest":"/api/$1"
+            "src": "/(.*)",
+            "dest":"/$1"
         },
         {
             "src": "/(.*)",
-            "dest":"/index.js"
+            "dest":"/"
         }
     ]
 }
