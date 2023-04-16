@@ -11,16 +11,13 @@ const fs = require("fs")
 const YAML = require('yaml')
 const file  = fs.readFileSync('./swagger.yaml', 'utf8')
 
-
-app.use(cors())
-app.use(express.json())
-app.use("/",router)
-
-
-
-mongoose.connect(`mongodb+srv://shvepsolek:${process.env.DB_PASSWORD}@cluster0.kbbfhuo.mongodb.net/mongo-users?retryWrites=true&w=majority`)
-
 const swaggerDocument = YAML.parse(file)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(cors())
+app.use(express.json())
+
+app.use("/",router)
+
+mongoose.connect(`mongodb+srv://shvepsolek:${process.env.DB_PASSWORD}@cluster0.kbbfhuo.mongodb.net/mongo-users?retryWrites=true&w=majority`)
 
 app.listen(PORT, () => console.log(`Server run on port ${PORT}`))
