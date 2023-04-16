@@ -15,9 +15,9 @@ app.use(express.json())
 app.use("/",router)
 const file  = fs.readFileSync('./swagger.yml', 'utf8')
 const swaggerDocument = YAML.parse(file)
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 mongoose.connect(`mongodb+srv://shvepsolek:${process.env.DB_PASSWORD}@cluster0.kbbfhuo.mongodb.net/mongo-users?retryWrites=true&w=majority`)
-
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => console.log(`Server run on port ${PORT}`))
