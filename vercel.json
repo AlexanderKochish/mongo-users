@@ -1,14 +1,9 @@
 {
     "version": 2,
     "builds": [
-        { "src": "index.js", "use": "@vercel/node" },
-        {
-            "src": "swagger.yaml",
-            "use": "@apidevtools/swagger-cli",
+        { "src": "index.js", "use": "@now/node",
             "config":{
-                "version": "3.0.0",
-                "base":"https://mongo-users.vercel.app",
-                "schemes":["https"]
+                "includeFiles": ["swagger.yaml"]
             }
         }
     ],
@@ -19,7 +14,7 @@
         },
         {
             "src": "/(.*)",
-            "dest":"/"
+            "dest":"/index.js"
         }
     ]
 }
