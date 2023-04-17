@@ -3,7 +3,7 @@ const app = express()
 require('dotenv').config()
 const cors = require('cors')
 const mongoose = require('mongoose');
-const PORT = process.env.PORT || 6000
+const PORT = process.env.PORT || 3000
 const router = require('./routes/router')
 const models = require('./models/models')
 const swaggerUi = require('swagger-ui-express');

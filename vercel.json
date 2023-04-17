@@ -1,23 +1,16 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "index.js", "use": "@vercel/node" },
-        {
-            "src": "swagger.yaml",
-            "use": "@apidevtools/swagger-cli",
-            "config":{
-                "version": "3.0.0",
-                "base":"https://mongo-users.vercel.app",
-                "schemes":["https"]
-            }
+    "build": {
+        "functions": {
+            "runtime":"node14.x"
         }
-    ],
+    },
     "routes":[
         {
             "handle":"filesystem"
         },
         {
-            "src": "/docs/(.*)",
+            "src": "/(.*)",
             "dest": "/docs/$1"
         },
         {
