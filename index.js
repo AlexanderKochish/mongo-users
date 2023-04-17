@@ -7,42 +7,12 @@ const PORT = process.env.PORT || 3000
 const router = require('./routes/router')
 const models = require('./models/models')
 const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 
-const options = {
-    swaggerDefinition:{
-        openapi: '3.0.0',
-        info:{
-            title: 'Swagger',
-            version:'1.0.0',
-            description: 'My first Api'
-        },
-        servers:[
-            { url: 'https://mongo-users.vercel.app'}
-        ],
-        components:{
-            schemas:{
-                User:{
-                    type: 'object',
-                    properties:{
-                        id:{
-                            type: 'integer',
-                        },
-                        name:{
-                            type: 'string',
-                     
-                        } 
-                    }
-                }
-            }
-        }
-    },
-    apis:['../routes/*js']
-};
-const specs = swaggerJsdoc(options)
-app.use('/docs',swaggerUi.serve, swaggerUi.setup(specs))
 app.use(cors())
 app.use(express.json())
+app.use('/',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use("/",router)
 
