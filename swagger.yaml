@@ -9,18 +9,6 @@ servers:
   - url: https://mongo-users.onrender.com
     description: Optional server description, e.g. Internal staging server for testing
 paths:
-  /:
-    get:
-      summary:  hello world
-      description: Return a hello world
-      responses:
-        '200':
-          description: OK
-          content:
-            text/plain:
-              scema:
-                type: string
-              example: "hello world"
   /users:
     get:
       summary: Returns a list of users.
@@ -33,14 +21,7 @@ paths:
               schema: 
                 type: array
                 items:
-                  $ref: '#/components/schemas/User'
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
+                  type: object
+
+
 
