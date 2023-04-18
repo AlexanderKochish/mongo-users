@@ -13,9 +13,7 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 app.use(cors())
 app.use(express.json())
 app.use("/",router)
-app.use('/',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-
 
 mongoose.connect(`mongodb+srv://shvepsolek:${process.env.DB_PASSWORD}@cluster0.kbbfhuo.mongodb.net/mongo-users?retryWrites=true&w=majority`)
-
+app.use('/',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.listen(PORT, () => console.log(`Server run on port ${PORT}`))
